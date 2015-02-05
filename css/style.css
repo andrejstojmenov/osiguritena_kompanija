@@ -88,7 +88,7 @@ ol li
 { margin-left: auto; 
   margin-right: auto;}
   
-header
+header, footer
 { height: 150px;
   background: #1D1D1D;
   background: -moz-linear-gradient(#535353, #000);
@@ -218,7 +218,10 @@ ul img {
 
 #site_content
 { width: 940px;
-  overflow: hidden;} 
+  overflow: hidden;
+  min-height: 400px;
+  margin-bottom: 30px;
+  } 
 
 .sidebar_container
 { float: right;
@@ -254,25 +257,7 @@ ul img {
   margin: 20px 10px 0 0;
   float: left;}
   
-footer
-{ width: 940px;
-  height: 50px;
-  padding-top: 25px;
-  padding-bottom: 20px;  
-  font-weight: bold;
-  text-align: center; 
-  text-shadow: 1px 1px #000;
-  color: #FFF;
-  background: #0043A8;
-  background: -moz-linear-gradient(#43A9FF, #0043A8);
-  background: -o-linear-gradient(#43A9FF, #0043A8);
-  background: -webkit-linear-gradient(#43A9FF, #0043A8);
-  border-radius: 15px 15px 15px 15px;
-  -moz-border-radius: 15px 15px 15px 15px;
-  -webkit-border: 15px 15px 15px 15px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;}
+
 
 footer a, footer a:hover
 { text-shadow: 1px 1px #FFF;
@@ -362,3 +347,122 @@ footer a:hover
   border-radius: 7px 7px 7px 7px;
   -moz-border-radius: 7px 7px 7px 7px;
   -webkit-border: 7px 7px 7px 7px;}
+  
+ /*----------------------------------------------------------------------  CSS -------------------------------------------------------------*/ 
+  
+ 
+ .submit
+ {
+	background-color: #535353;
+	
+	background: -moz-linear-gradient(#535353, #000);
+	background: -o-linear-gradient(#535353, #000);
+	background: -webkit-linear-gradient(#535353, #000);
+	
+	border: 1px solid rgb(158, 158, 158);
+	padding:5px;
+	color: white;
+	cursor: pointer;
+ }
+ 
+ .submit:hover
+ {
+	background-color: #000;
+	
+	background: -moz-linear-gradient(#000, #535353);
+	background: -o-linear-gradient(#000, #535353);
+	background: -webkit-linear-gradient(#000, #535353);
+ }
+ 
+ .mt30
+ {
+	margin-top: 30px;
+ }
+ 
+ .br3, input[type=text], input[type=password], .submit, .success_message, .error_message
+ {
+	border: 1px solid #9E9E9E;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+ }
+ 
+ .ml15
+ {
+	margin-left: 25px;
+ }
+ 
+.center
+{
+	text-align: center;
+} 
+
+#image_container
+{
+	height: 270px;
+  background: #0043A8;
+  padding-top: 20px;
+} 
+
+footer
+{
+	height: auto;
+	color: white;
+}
+
+.ib
+{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.error_txt
+{
+	display: block;
+	height: 39px;
+	line-height: 39px;
+	font-weight: bold;
+	color: red;
+	text-align:left;
+	font-size: 15px;
+}
+
+.tr_text
+{
+	display: block;
+	height: 39px;
+	line-height: 39px;
+	font-weight: bold;
+	text-align:left;
+	font-size: 17px;
+	color: black;
+}
+
+.tr_txt
+{
+	margin-top:5px;
+	display: block;
+	height: 30px;
+	font-weight: bold;
+	text-align:left;
+}
+
+.error_message
+{
+	background-color:red;
+	color:white;
+	height:30px;
+	line-height:30px;
+	padding-left:20px;
+	margin-top: 20px;
+}
+
+.success_message
+{
+	background-color:green;
+	color:white;
+	height:30px;
+	line-height:30px;
+	padding-left:20px;
+	margin-top: 20px;
+}
