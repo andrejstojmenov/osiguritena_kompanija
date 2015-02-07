@@ -47,25 +47,41 @@
 	  <div id="strapline">
 	    <div id="welcome_slogan">
 	      <h3> <span> ОСИГУРИТЕЛНА КОМПАНИЈА </span></h3>
-	      <h3> <span> ADMIN PAGE </span></h3>
 	    </div><!--close welcome_slogan-->
       </div><!--close strapline-->	  
 	  <nav>
-	    <div id="menubar">
-          <ul id="nav">
-            <li ><a href="index.html">Почетна</a></li>
-            <li><a href="vozila.html">Возила</a></li>
-            <li><a href="patnicko.html">Патничко</a></li>
-            <li><a href="imotno.html">Имотно</a></li>
-            <li><a href="kontakt.html">Контакт</a></li>
-			<li class="current"><a href="login.php">Најава</a></li>
-          </ul>
-        </div><!--close menubar-->	
+	    <div id='cssmenu'>
+			<ul>
+			   <li><a href='osigurenik.php'><span>Внеси нов осигуреник</span></a></li>
+			   <li class='active has-sub'><a href='#'><span>Осигурување</span></a>
+				  <ul>
+					 <li class='has-sub'><a href='#'><span>Осигурување на возила</span></a>
+						<ul>
+						   <li><a href='vozila.php'><span>Осигурување на автомобили</span></a></li>
+						   <li class='last'><a href='motorcikli.php'><span>Осигурување на моторцикли</span></a></li>
+						   <li class='last'><a href='tovarni.php'><span>Осигурување на товарни возила</span></a></li>
+						</ul>
+					 </li>
+					 <li class='has-sub'><a href='#'><span>Осигурување на имот</span></a>
+						<ul>
+						   <li><a href='stan.php'><span>Осигурување на стан</span></a></li>
+						   <li class='last'><a href='kuka.php'><span>Осигурување на куќа</span></a></li>
+						   <li class='last'><a href='deloven.php'><span>Осигурување на деловен простор</span></a></li>
+						</ul>
+					 </li>
+					 <li class='has-sub'><a href='#'><span>Патничко осигурување</span></a>
+					
+					 </li>
+				  </ul>
+			   </li>
+			   <li><a href='logout.php'><span>Одјави се</span></a></li>
+			</ul>
+		</div>	
       </nav>
     </header>
     
     <div id="image_container" class="center"> 
-           <img width="940" height="250" src="images/login.jpg"  />
+           <img width="940" height="250" src="images/admin.jpg"  />
 	</div><!--close slideshow_container-->   
 	
 	<div id="site_content">		
@@ -77,8 +93,7 @@
 				<div class="success_message"><?php echo $success_message?></div>
 		<?php }?>
         <div class="content_item mt30">
-		 <form action="" method="post">
-		  </form>
+		 <h2> Добредојдовте <?php echo $_SESSION['user']['ime']?> </h2>
 		</div><!--close content_item-->
 		
       </div><!--close content-->   
