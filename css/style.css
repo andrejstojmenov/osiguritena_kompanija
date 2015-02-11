@@ -350,6 +350,17 @@ footer a:hover
   
  /*----------------------------------------------------------------------  CSS -------------------------------------------------------------*/ 
   
+ #table_user
+{
+	/* border: 1px solid black; */
+	/* border-spacing: 10px; */
+} 
+#table_user td
+{
+	border: 1px solid black;
+	
+}
+  
  td.red
  {
 	color:red;

@@ -38,7 +38,7 @@
 		//					  ")
 		//						or die(mysql_error());
 
-		
+		mysql_query("SET NAMES utf8");
 		$result = mysql_query("SELECT * FROM `users` 
 							   WHERE 
 									`username` = '".$user_data['username'] ."' AND
