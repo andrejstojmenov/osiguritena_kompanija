@@ -53,7 +53,7 @@
 			}	
 			if($pov <= 50&& $pov!=' ' && $pov!=0)
 			{
-			$cena1=2500;			
+			$cena1=2400;			
 			}
 			else if($pov > 50 && $pov <=250 && $pov!=' ')
 			{
