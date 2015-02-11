@@ -2,6 +2,7 @@
 <?php require('initialize.php'); ?>
 <?php $auth->admin(); ?>
 
+
 <?php	
 
 	if(isset($_SESSION['user_data']))
@@ -53,7 +54,7 @@
 	    <div id='cssmenu'>
 			<ul>
 			   <li><a href='osigurenik.php'><span>Внеси нов осигуреник</span></a></li>
-			   <li class='active has-sub'><a href='#'><span>Осигурување</span></a>
+			   <li class=' has-sub'><a href='#'><span>Осигурување</span></a>
 				  <ul>
 					 <li class='has-sub'><a href='#'><span>Осигурување на возила</span></a>
 						<ul>

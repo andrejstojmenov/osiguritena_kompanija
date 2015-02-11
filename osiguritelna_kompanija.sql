@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.2
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Feb 07, 2015 at 04:44 PM
--- Server version: 5.6.13
--- PHP Version: 5.4.17
+-- Host: 127.0.0.1
+-- Generation Time: Feb 11, 2015 at 01:31 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.9
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -40,8 +40,9 @@ CREATE TABLE IF NOT EXISTS `avtomobili` (
   `godina` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `boja` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `cena` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 -- --------------------------------------------------------
 
@@ -61,8 +62,9 @@ CREATE TABLE IF NOT EXISTS `motorcikli` (
   `godina` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `boja` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `cena` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -103,8 +105,9 @@ CREATE TABLE IF NOT EXISTS `tovarni` (
   `godina` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `boja` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `cena` int(11) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -124,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `telefon` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `role_id` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `users`
@@ -134,7 +137,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `role_id`, `ime`, `prezime`, 
 (3, 'ptrjovanov', 'qwerty123', 1, 'Petar', 'Jovanov', 54489, 'Marsal Tito br 1/18', 72212488),
 (4, 'andrstojmenov', 'qwerty123', 1, 'Andrej', 'Stojmenov', 46541, 'Todosija Paunov br. 16', 71233209),
 (5, 'someuser', 'qwerty123', 2, 'Stojan', 'Stojanov', 4654612, 'Jordan Piperkata bb', 75889665),
-(9, 'Душан.Стојков', 'qwerty123', 2, 'Душан', 'Стојков', 123, 'Зрновци', 1234);
+(9, 'Душан.Стојков', 'qwerty123', 2, 'Душан', 'Стојков', 123, 'Зрновци', 1234),
+(10, 'petar.jovanov', 'qwerty123', 2, 'petar', 'jovanov', 123123, 'fsdfsd', 1233);
 
 --
 -- Constraints for dumped tables

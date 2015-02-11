@@ -218,7 +218,7 @@ ul img {
 
 #site_content
 { width: 940px;
-  overflow: hidden;
+  /* overflow: hidden; */
   min-height: 400px;
   margin-bottom: 30px;
   } 
@@ -350,6 +350,15 @@ footer a:hover
   
  /*----------------------------------------------------------------------  CSS -------------------------------------------------------------*/ 
   
+ td.red
+ {
+	color:red;
+ }
+ 
+ .pointer
+ {
+	cursor: pointer;
+ }
  
  .submit
  {
@@ -489,7 +498,7 @@ footer
   background: -o-linear-gradient(top, #333333 0%, #141414 100%);
   background: -ms-linear-gradient(top, #333333 0%, #141414 100%);
   background: linear-gradient(to bottom, #333333 0%, #141414 100%);
-  border-bottom: 2px solid #0fa1e0;
+  /* border-bottom: 2px solid #0fa1e0; */
   width: auto;
 }
 #cssmenu:after,
@@ -549,7 +558,7 @@ footer
   bottom: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #0fa1e0;
+  /* border-bottom: 10px solid #0fa1e0; */
   margin-left: -10px;
 }
 #cssmenu > ul > li:first-child > a {
@@ -613,7 +622,9 @@ footer
   /* color: #ffffff; */
 }
 #cssmenu .has-sub ul li:hover a {
-  background: #0c7fb0;
+  /* background: #0c7fb0; */
+  background: #141414;
+ background: linear-gradient(to bottom, #262626 0%, #070707 100%);
 }
 #cssmenu ul ul li:hover > a {
   /* color: #ffffff; */
@@ -637,7 +648,7 @@ footer
   border-bottom: 1px dotted #31b7f1; */
 }
 #cssmenu .has-sub .has-sub ul li a:hover {
-  background: #0a6d98;
+  background: #141414;
 }
 #cssmenu ul ul li.last > a,
 #cssmenu ul ul li:last-child > a,
