@@ -147,7 +147,7 @@
 						   <li class='last'><a href='deloven.php'><span>Осигурување на деловен простор</span></a></li>
 						</ul>
 					 </li>
-					 <li class='has-sub'><a href='#'><span>Патничко осигурување</span></a>
+					 <li class='has-sub'><a href='patnicko.php'><span>Патничко осигурување</span></a>
 					
 					 </li>
 				  </ul>

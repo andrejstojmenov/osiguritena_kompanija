@@ -35,73 +35,124 @@
 	if(isset($_POST['presmetaj']))
 	{
 		
-		require('validation/val_motorcikli.php');
+		require('validation/val_patnicko.php');
 		if(!isset($validation_errors))
 		{
 			$cena0=0;  
-			$cena1=0;  
-			$cena2=0;  
-			$rez=0;
-			$power=$_POST["sila"];
-			$zaf=$_POST["zafatnina"];
-			$motor=$_POST["tip"];	
-		
-				switch($motor)
-				{
-				case '0':$cena0=0; break;
-				case 'Веспа':$cena0=500; break;
-				case 'Скутер':$cena0=750; break;
-				case 'Чопер':$cena0=1500; break;
-				case 'Спортски мотор':$cena0=2500; break;
-				case 'Четирицикал':$cena0=1750; break;
-				}	
-			if($power <= 10 && $power!=' ' && $power!=0){
-			$cena1=800;
+			$cena1=0;		  		
+			$rez=0;		
+			$pokri=$_POST["pokritie"];
+			$pokri1;
+			$pokri2;
+			$pokri3;		
 			
+
+			if (isset($_POST['zdravstvena']) && isset($_POST['nezgoda']) && isset($_POST['bagaz']))
+			{	
+				$cena0=300;
+				$pokri1=true;
+				$pokri2=true;
+				$pokri3=true;
 			}
-			else if($power > 10 && $power <=50 && $power!=' ')
+			else if (isset($_POST['zdravstvena']) && isset($_POST['nezgoda']))
+			{	
+				$cena0=180;
+				$pokri1=true;
+				$pokri2=true;
+				$pokri3=false;
+			}
+			else if (isset($_POST['zdravstvena']) && isset($_POST['bagaz']))
+			{	
+				$cena0=200;
+				$pokri1=true;
+				$pokri2=false;
+				$pokri3=true;
+			}
+			else if (isset($_POST['nezgoda']) && isset($_POST['bagaz']))
+			{	
+				$cena0=220;
+				$pokri1=false;
+				$pokri2=true;
+				$pokri3=true;
+			}
+			else if (isset($_POST['zdravstvena']))
 			{
-			$cena1=1200;
-	
+			
+				$cena0=80;
+				$pokri1=true;
+				$pokri2=false;
+				$pokri3=false;
 			}
-			else if($power > 50 && $power!=' ')
+			else if (isset($_POST['nezgoda']))
 			{
-			$cena1=1450;
-	
+			
+				$cena0=100;
+				$pokri1=false;
+				$pokri2=true;
+				$pokri3=false;
 			}
-			else{
-			$cena1=0;
+			else if (isset($_POST['bagaz']))
+			{
+			
+				$cena0=120;
+				$pokri1=false;
+				$pokri2=false;
+				$pokri3=true;
 			}
-			if($zaf <=50 && $zaf!=' ' && $zaf!=0){
-			$cena2=550;
 		
-			}
-			else if($zaf > 50 && $zaf <=150 && $zaf!=' ')
+			else 
 			{
-			$cena2=1200;
-		
+				$cena0=0;
+				$pokri1=false;
+				$pokri2=false;
+				$pokri3=false;
 			}
-			else if($zaf >150 && $zaf <=750 && $zaf!=' ')
+			if($pokri1==true)
 			{
-			$cena2=1550;
-		
-			}
-			else if($zaf > 750 && $zaf!=' ')
-			{
-			$cena2=1850;		
+				$pokriT1="ДА";
 			}
 			else
 			{
-			$cena2=0;			
+				$pokriT1="НЕ";
 			}
-			$rez=$cena0+$cena1+$cena2;
+			if($pokri2==true)
+			{
+				$pokriT2="ДА";
+			}
+			else
+			{
+				$pokriT2="НЕ";
+			}
+			if($pokri3==true)
+			{
+				$pokriT3="ДА";
+			}
+			else
+			{
+				$pokriT3="НЕ";
+			}
 			
+			if($pokri<= 10&& $pokri!=' ' && $pokri!=0)
+				{
+					$cena1=50;			
+				}
+			else if($pokri > 10 && $pokri <=30 && $pokri!=' ')
+				{
+					$cena1=250;
 		
+				}
+			else if($pokri > 20&& $pokri!=' ')
+				{
+					$cena1=300;	
+				}
+			else{
+					$cena1=0;
+				}				
+				$rez=$cena0+$cena1;
 		
-		
-			$sql="INSERT INTO `motorcikli`(`licna_karta`, `reg_br`,`br_shasija`,`marka`,`tip`,`sila`,`zafatnina`,`godina`,`boja`,`cena`, `user_id`)
+			$sql="INSERT INTO `patnicki`(`licna_karta`, `period`,`drzava`,`zdravstvena`,`nezgoda`, `bagaz`, `cena`, `user_id`)
 			 VALUES
-			 ('$_POST[licna_karta]','$_POST[reg_br]','$_POST[br_shasija]','$_POST[marka]','$_POST[tip]','$_POST[sila]','$_POST[zafatnina]','$_POST[godina]','$_POST[boja]',$rez, $user[id])";	
+			 ('$_POST[licna_karta]','$_POST[period]','$_POST[drzava]','$_POST[zdravstvena]','$_POST[nezgoda]','$_POST[bagaz]',$rez, $user[id])";	
 
 			mysql_query("SET NAMES utf8");
 			mysql_query($sql) or die(mysql_error());
@@ -109,8 +160,8 @@
 			$_SESSION['user_data'] = $user_data;
 			$_SESSION['user_data']['cena']= $rez;
 		 
-			$_SESSION['success_message'] = 'Внесено е ново осигурување на моторцикал. Можете да го снимите во PDF формат и да го испечатите ';
-			header('Location: motorcikli.php');
+			$_SESSION['success_message'] = 'Внесено е ново здравствено осигурување. Можете да го снимите во PDF формат и да го испечатите ';
+			header('Location: patnicko.php');
 		
 		}
 		else
@@ -128,7 +179,7 @@
 		
 			$_SESSION['user_data'] = $user_data;
 			// Redirect back
-			header('Location: motorcikli.php');
+			header('Location: patnicko.php');
 		
 		}
 		
@@ -142,7 +193,7 @@
 <html>
 
 <head>
-  <title>Осигурување моторцикли</title>
+  <title></title>
   <meta charset = 'utf-8' />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
@@ -201,39 +252,26 @@
 				<div class="success_message"><?php echo $success_message?></div>
 		<?php }?>
         <div class="content_item mt30">
-		<h1 style="text-align: center; margin-bottom:20px; ">Осигурување на моторцикли</h1>
+		<h1 style="text-align: center">Патничко осигурување</h1>
 		
-		 <form action="motorcikli.php" method="post">
+		  <form action="patnicko.php" method="post">
 			
 			<article>	
 				<table cellspacing="10" id="osi_avto" class="tr_text" style = 'height:auto'>
 					<tr><td align="left">Број на лична карта: </td><td><input type="text" name="licna_karta" class="tr_txt" value="<?php echo sprintifset($user_data['licna_karta'])?>"></td><td class="red"><?php echo printifset($validation_errors['licna_karta'][0])?></td></tr>
-					<tr><td align="left">Регистерски број: </td><td><input type="text" name="reg_br" class="tr_txt" value="<?php echo sprintifset($user_data['reg_br'])?>"></td><td class="red"><?php echo printifset($validation_errors['reg_br'][0])?></td></tr>
-					<tr><td align="left">Број на шасија: </td><td><input type="text" name="br_shasija" class="tr_txt" value="<?php echo sprintifset($user_data['br_shasija'])?>"></td><td class="red"><?php echo printifset($validation_errors['br_shasija'][0])?></td></tr> 
-					<tr><td align="left">Марка: </td><td><input type="text" name="marka" class="tr_txt" value="<?php echo sprintifset($user_data['marka'])?>"></td><td class="red"><?php echo printifset($validation_errors['marka'][0])?></td></tr>
-					<tr><td align="left">Тип: </td>
-					<td>
-						<select style="width:155px" name="tip" class="tr_txt">
-							<option value="0">Избери тип</option>
-							<option value="Веспа" <?php if(isset($user_data['tip']) && $user_data['tip'] == 'Веспа') echo 'selected'?>>Веспа</option>
-							<option value="Скутер" <?php if(isset($user_data['tip']) && $user_data['tip'] == 'Скутер') echo 'selected'?>>Скутер</option>
-							<option value="Чопер" <?php if(isset($user_data['tip']) && $user_data['tip'] == 'Чопер') echo 'selected'?>>Чопер</option>
-							<option value="Спортски мотор" <?php if(isset($user_data['tip']) && $user_data['tip'] == 'Спортски мотор') echo 'selected'?>>Спортски мотор</option>
-							<option value="Четирицикал" <?php if(isset($user_data['tip']) && $user_data['tip'] == 'Четирицикал') echo 'selected'?>>Четирицикал</option>
-						</select>		
-					</td>
-					<td class="red"><?php echo printifset($validation_errors['tip'][0])?></td>
-					</tr>
-					<tr><td align="left">Сила на моторот: </td><td><input type="text" name="sila" class="tr_txt" placeholder="KW" value="<?php echo sprintifset($user_data['sila'])?>">
-					</td><td class="red"><?php echo printifset($validation_errors['sila'][0])?></td></tr>
-					<tr><td align="left">Работна зафатнина: </td><td><input type="text" name="zafatnina" class="tr_txt"  placeholder="cm3" value="<?php echo sprintifset($user_data['zafatnina'])?>">
-					</td><td class="red"><?php echo printifset($validation_errors['zafatnina'][0])?></td></tr>
-					<tr><td align="left">Година на производство: </td><td><input type="text" name="godina" class="tr_txt" placeholder="ГГГГ-ММ-ДД" value="<?php echo sprintifset($user_data['godina'])?>">
-					</td><td class="red"><?php echo printifset($validation_errors['godina'][0])?></td></tr>
-					<tr><td align="left">Боја: </td><td><input type="text" name="boja" class="tr_txt" value="<?php echo sprintifset($user_data['boja'])?>">
-					</td><td class="red"><?php echo printifset($validation_errors['boja'][0])?></td></tr>
-					<tr><td align="left"></td><td></td></tr>
-					<tr><td align="left"></td><td></td></tr>
+					<tr><td align="left">Период на покритие: </td><td><input type="text" name="period" class="tr_txt" placeholder="дена" value="<?php echo sprintifset($user_data['period'])?>"></td><td class="red"><?php echo printifset($validation_errors['period'][0])?></td></tr>
+					<tr><td align="left">Држава на патување: </td><td><input type="text" name="drzava" class="tr_txt" value="<?php echo sprintifset($user_data['drzava'])?>">
+					</td><td class="red"><?php echo printifset($validation_errors['drzava'][0])?></td></tr>
+					
+					<tr><td align="left">Здравствена помош при патување: </td><td><input type="checkbox" name="zdravstvena" class="tr_txt">
+					</td></tr>
+					
+					<tr><td align="left">Осигурување од незгода: </td><td><input type="checkbox" name="nezgoda" class="tr_txt">
+					</td></tr>
+					
+					<tr><td align="left">Осигурување на багаж: </td><td><input type="checkbox" name="bagaz" class="tr_txt">
+					</td></tr>
+					
 					<tr><td align="right"><td>Цена:</td> <td><input type="text" name="cena" style="width:50px; display:inline" disabled="true" class="tr_txt" value="<?php echo sprintifset($user_data['cena'])?>"> Ден.</td></tr>
 					<tr><td align="right"><input type="submit" name="presmetaj" value="Пресметај" class="submit" style="width:100px" target="_blank"></td></tr>
 				</table>		
