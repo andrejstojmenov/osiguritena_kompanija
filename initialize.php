@@ -18,5 +18,5 @@ $auth = new Auth();
 $pdf=new FPDF();
 
 // Povrzi se so bazata
-$db = mysql_connect("localhost","root", "") or die('Can not connect to database') ;
+$db = mysql_connect("localhost","root", "usbw") or die('Can not connect to database') ;
 mysql_select_db("osiguritelna_kompanija") or die('Can not select db "osiguritelna_kompanija" ');
