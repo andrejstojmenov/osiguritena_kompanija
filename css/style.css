@@ -349,7 +349,37 @@ footer a:hover
   -webkit-border: 7px 7px 7px 7px;}
   
  /*----------------------------------------------------------------------  CSS -------------------------------------------------------------*/ 
-  
+ 
+#pdf
+{
+display:inline;
+	background-color: #535353;
+	
+	background: -moz-linear-gradient(#CC0000, #FF0000);
+	background: -o-linear-gradient(#CC0000, #FF0000);
+	background: -webkit-linear-gradient(#CC0000, #FF0000);
+	
+	border: 1px solid rgb(158, 158, 158);
+	padding:5px;
+	color: white;
+	cursor: pointer;
+	text-decoration:none;
+}
+
+#pdf:hover
+{
+	
+	background: -moz-linear-gradient(#FF0000, #CC0000);
+	background: -o-linear-gradient(#FF0000, #CC0000);
+	background: -webkit-linear-gradient(#FF0000, #CC0000);
+	
+	border: 1px solid rgb(158, 158, 158);
+	padding:5px;
+	color: white;
+	cursor: pointer;
+	text-decoration:none;
+}
+ 
  #table_user
 {
 	/* border: 1px solid black; */

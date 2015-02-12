@@ -109,6 +109,8 @@
 		 
 			$_SESSION['user_data'] = $user_data;
 			$_SESSION['user_data']['cena']= $rez;
+			$id = mysql_insert_id();
+			$_SESSION['user_data']['pdf'] = "snimi_pdf.php?tip=tovarni&id=$id";
 			
 		 
 			$_SESSION['success_message'] = 'Внесено е ново осигурување на товарно возило. Можете да го снимите во PDF формат и да го испечатите';
@@ -235,6 +237,9 @@
 					<tr><td align="left"></td><td></td></tr>
 					<tr><td align="right"><td>Цена:</td> <td><input type="text" name="cena" style="width:50px; display:inline" disabled="true" class="tr_txt" value="<?php echo sprintifset($user_data['cena'])?>"> Ден.</td></tr>
 					<tr><td align="right"><input type="submit" name="presmetaj" value="Пресметај" class="submit" style="width:100px" target="_blank"></td></tr>
+					<?php if(isset($user_data['pdf'])){ ?>
+					<tr><td align="right"><a href="<?php echo $user_data['pdf'] ?>" id="pdf" style="display:inline-block;width:100px;">Сними .pdf</a></td></tr>
+					<?php } ?>
 				</table>		
 			</article>
 		  </form>
